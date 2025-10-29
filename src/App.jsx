@@ -1,28 +1,46 @@
-import { useState } from 'react'
+import React from 'react';
+import Hero from './components/Hero';
+import About from './components/About';
+import Projects from './components/Projects';
+import ExperienceAndContact from './components/ExperienceAndContact';
 
-function App() {
-  const [count, setCount] = useState(0)
+const MIDNIGHT = '#0a0f1f';
+const SILVER = '#c0c0c0';
 
+export default function App() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-blue-50 flex items-center justify-center">
-      <div className="bg-white p-8 rounded-lg shadow-lg">
-        <h1 className="text-3xl font-bold text-gray-800 mb-4">
-          Vibe Coding Platform
-        </h1>
-        <p className="text-gray-600 mb-6">
-          Your AI-powered development environment
-        </p>
-        <div className="text-center">
-          <button
-            onClick={() => setCount(count + 1)}
-            className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded"
-          >
-            Count is {count}
-          </button>
+    <div className="min-h-screen" style={{ backgroundColor: MIDNIGHT }}>
+      {/* Simple top nav */}
+      <header className="sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-slate-900/50 border-b border-slate-800/50">
+        <div className="mx-auto max-w-6xl px-6 h-14 flex items-center justify-between">
+          <a href="#home" className="text-sm font-semibold tracking-wide text-white">Flames<span style={{ color: '#00d3ff' }}>.</span>Blue</a>
+          <nav className="hidden md:flex items-center gap-6 text-slate-300">
+            <a href="#about" className="hover:text-white">About</a>
+            <a href="#projects" className="hover:text-white">Projects</a>
+            <a href="#experience" className="hover:text-white">Experience</a>
+            <a href="#contact" className="hover:text-white">Contact</a>
+            <a href="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf" download className="rounded-md px-3 py-1.5 text-slate-900" style={{ backgroundColor: '#00d3ff' }}>CV</a>
+          </nav>
         </div>
-      </div>
-    </div>
-  )
-}
+      </header>
 
-export default App
+      <main>
+        <Hero />
+        <About />
+        <Projects />
+        <ExperienceAndContact />
+      </main>
+
+      <footer className="py-10 border-t border-slate-800/60">
+        <div className="mx-auto max-w-6xl px-6 flex flex-col md:flex-row items-center justify-between gap-4 text-slate-400 text-sm">
+          <p>
+            © {new Date().getFullYear()} Muhammad Irshad Cholakkal. Crafted with care.
+          </p>
+          <p>
+            Palette: Midnight Navy · Electric Blue · Metallic Silver
+          </p>
+        </div>
+      </footer>
+    </div>
+  );
+}
